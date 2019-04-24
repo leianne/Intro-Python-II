@@ -1,5 +1,5 @@
 from room import Room
-
+from player import Player
 # Declare all the rooms
 
 room = {
@@ -49,3 +49,10 @@ room['treasure'].s_to = room['narrow']
 # Print an error message if the movement isn't allowed.
 #
 # If the user enters "q", quit the game.
+print('Welcome to BonQuiQui\'s Quest!')
+name = input('Please enter your name! ')
+print(f'Welcome {name}!, You must now select a room to enter!')
+print('You may choose from the following!:')
+for x in room:
+    print(room[x].name)
+user_room_choice = input('Please enter the room you want to go into! ')
