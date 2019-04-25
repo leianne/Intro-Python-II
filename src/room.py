@@ -9,6 +9,10 @@ class Room:
     def add_item(self, item):
         self.contains.append(item)
     def view_items(self):
-        print(f'You have the option of these items: ')
-        for x in self.contains:
-            print(x)
+        if len(self.contains) == 0:
+            print("Looks likes there are no items in this room yet")
+            return 0
+        else:
+            print(f'You have the option of these items: ')
+            for x in self.contains:
+                print(x)
