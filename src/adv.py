@@ -62,30 +62,38 @@ name = input('Please enter your name! ')
 current_player = Player(name, room['outside'])
 print(f'Welcome {name}!, Your journey has just begun!');
 while True: 
+    print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
     print(f'\nYou are currently in the {current_player.current_room.name}')
     print(f'\nThis room is {current_player.current_room.options}')
     print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
     print(f'Ok {name}')
-    print('Let\'s move into another room')
-    s = input('What direction do you want to go? ')
-    print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
+    print('You have a couple of options now!')
+    print(f'Would you like to move into another room? Or view the items in {current_player.current_room.name}')
+    s = input('Move or View Items? ')
     s = s[0].lower()
-    current_player.current_room = try_direction(s, current_player.current_room)
-    # room_items = current_player.current_room.view_items()
-    # if room_items == 0:
-    #     print('Would you like to add and item to this room?')
-    #     s = input('Yes or No? ')
-    #     s = s[0].lower()
-    #     if s == "y":
-    #         t = input('Please enter a name for the item!')
-    #     elif s == "n":
-    #         continue
-    #     else:
-    #         print('I don\'t understand')
-    # else:
-    #     print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
-    #     print('Ok...You can know switch rooms')
-    #     print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
-    #     user_room_choice = input('Please enter the direction you want to go!')
-    #     user_room_choice = input('Please enter the room you want to go into! ')
+    if s == 'm':
+        print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
+        print('Where would you like to go?')
+        d = input('Enter a direction!')
+        d = d[0].lower()
+        current_player.current_room = try_direction(d, current_player.current_room)
+    elif s == "v" or s == "i":
+        print(f'Ok {name}')
+        items = current_player.current_room.view_items()
+        if items == 0:
+            print('Would you like to add an item?')
+            i = input('Yes or No? ')
+            i = i[0].lower()
+            if i == "y":
+                item = input('Please enter the name of the item you want to add! ')
+                item = item.replace(' ', '')
+                current_player.current_room.add_item(item)
+        else:
+            print('~~~~~~~~~~~~~~~~~~~~~~~~~~~')
+            print(f'Here are the items in {current_player.current_room.name}')
+            for x in items:
+                print(x)
+            i = input('Enter the item that you want to grab!')
+            
 
+                

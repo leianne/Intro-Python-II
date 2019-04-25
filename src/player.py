@@ -8,3 +8,9 @@ class Player:
         self.inventory = []
     def add_item(self, item):
         self.inventory.append(item)
+    def view_inventory(self):
+        if len(self.inventory) == 0:
+            print('You have no items in you inventory')
+            return 0
+        else:
+            return self.inventory

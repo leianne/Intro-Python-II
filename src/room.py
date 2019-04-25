@@ -13,6 +13,4 @@ class Room:
             print("Looks likes there are no items in this room yet")
             return 0
         else:
-            print(f'You have the option of these items: ')
-            for x in self.contains:
-                print(x)
+            return self.contains
