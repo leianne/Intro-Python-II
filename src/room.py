@@ -10,7 +10,7 @@ class Room:
         self.contains.append(item)
     def view_items(self):
         if len(self.contains) == 0:
-            print("Looks likes there are no items in this room yet")
+            print("\nLooks likes there are no items in this room yet")
             return 0
         else:
             return self.contains
